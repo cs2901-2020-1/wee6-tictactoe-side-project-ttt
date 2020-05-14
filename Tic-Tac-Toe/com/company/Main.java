@@ -16,18 +16,18 @@ public class Main {
         populateEmptyBoard();
 
         printBoard();
-        System.out.println("X's will play first. Enter a slot number to place X in:");
+        System.out.println("Turno jugador X. Inserta el numero de casilla: ");
 
         while (winner == null) {
             int numInput;
             try {
                 numInput = in.nextInt();
                 if (!(numInput > 0 && numInput <= 9)) {
-                    System.out.println("Invalid input; re-enter slot number:");
+                    System.out.println("Error. Intenta nuevamente: ");
                     continue;
                 }
             } catch (InputMismatchException e) {
-                System.out.println("Invalid input; re-enter slot number:");
+                System.out.println("Error. Intenta nuevamente: ");
                 continue;
             }
             if (board[numInput-1] == numInput) {
@@ -36,13 +36,13 @@ public class Main {
                 printBoard();
                 winner = checkWinner();
             } else {
-                System.out.println("Slot already taken; re-enter slot number:");
+                System.out.println("Casilla llena. Intenta nuevamente: ");
             }
         }
         if (winner.equalsIgnoreCase("draw")) {
-            System.out.println("It's a draw! Thanks for playing.");
+            System.out.println("Tablero lleno. Empate.");
         } else {
-            System.out.println("Congratulations! " + winner + "'s have won! Thanks for playing.");
+            System.out.println("Ganador jugador " + winner + ". Fin del juego.");
         }
     }
 
@@ -85,9 +85,9 @@ public class Main {
         for (int a = 0; a < 9; a++) {
             if (board[a] != 0) {
                 if (board[a] == 10) {
-                    System.out.println("X's turn; enter a slot number to place X in:");
+                    System.out.println("Turno jugador X. Inserta el numero de casilla:");
                 } else {
-                    System.out.println("O's turn; enter a slot number to place O in:");
+                    System.out.println("Turno jugador O. Inserta el numero de casilla:");
                 }
                 return null;
             }
